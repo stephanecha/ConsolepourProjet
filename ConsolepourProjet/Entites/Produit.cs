@@ -9,6 +9,7 @@ namespace ConsolePourTest.Entites
     public class Produit
     {
         private decimal prix;
+
         public int Id { get; set; }
 
         public string Nom { get; set; }
@@ -16,24 +17,22 @@ namespace ConsolePourTest.Entites
         public decimal Prix
         {
             get { return this.prix; }
-
             set
             {
                 if (value <= 0)
-                    throw new Exception("Le prix ne peut pas être négatif");
+                    throw new Exception("Prix doit être > 0");
 
                 prix = value;
-
             }
         }
 
         public void Valider()
         {
             if (Prix <= 0)
-                throw new Exception("Le prix ne peut pas être négatif");
+                throw new Exception("Prix doit être > 0");
 
-            if (string.IsNullOrEmpty(Nom))
-                throw new Exception("Le nom est requis");
+            if (string.IsNullOrWhiteSpace(Nom))
+                throw new Exception("Nom est requis");
         }
     }
 }

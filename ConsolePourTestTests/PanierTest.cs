@@ -27,7 +27,25 @@ namespace ConsolePourTestTests
                 },
                 Quantite = 1
             });
+
             Assert.AreEqual(100, panier.GetTotal());
+        }
+
+        [TestMethod]
+        public void FraisPortOffertsSiSuperieur100()
+        {
+            var panier = new Panier();
+            panier.Lignes.Add(new LignePanier
+            {
+                Produit = new Produit
+                {
+                    Nom = "Tronçonneuse",
+                    Prix = 90
+                },
+                Quantite = 2
+            });
+
+            Assert.AreEqual(180, panier.GetTotal());
         }
     }
 }

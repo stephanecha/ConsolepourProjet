@@ -42,7 +42,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Entites\Ligne.cs" />
+    <Compile Include="Entites\LignePanier.cs" />
     <Compile Include="Entites\Panier.cs" />
     <Compile Include="Entites\Produit.cs" />
     <Compile Include="Program.cs" />

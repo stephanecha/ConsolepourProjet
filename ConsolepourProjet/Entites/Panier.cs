@@ -10,21 +10,29 @@ namespace ConsolePourTest.Entites
     {
         public Panier()
         {
-            Lignes = new List<LignePanier>();
+            this.Lignes = new List<LignePanier>();
         }
 
         public List<LignePanier> Lignes { get; set; }
 
-        public decimal FraisPort { get; set; } = 10;
-
         public decimal GetTotal()
         {
-            if (!Lignes.Any())
+            if (!this.Lignes.Any())
             {
                 return 0;
             }
-            var totalLignes = Lignes.Sum(x => x.Produit.Prix * x.Quantite);
-            return totalLignes + FraisPort;
+
+            var totalLignes = this.Lignes.Sum(x => x.Produit.Prix * x.Quantite);
+            var fraisPort = totalLignes > 100 ? 0 : 10;
+            return totalLignes + fraisPort;
+        }
+
+        public void Valider()
+        {
+            foreach (var ligne in this.Lignes)
+            {
+                ligne.Valider();
+            }
         }
     }
 }
